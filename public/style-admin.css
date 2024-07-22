@@ -1,0 +1,120 @@
+body {
+    background: linear-gradient(to right, #ffa5e1, #dbb8f8);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 800px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  h1, h2 {
+    text-align: center;
+    color: #4a4a4a;
+  }
+  
+  #messageForm {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  #messageForm .form-group label {
+    color: #495057;
+  }
+  
+  #messageForm button {
+    background-color: #d63384;
+    border: none;
+    width: 100%;
+  }
+  
+  #messageForm button:hover {
+    background-color: #a5276b;
+  }
+  
+  #messageHistory {
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .card {
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+  
+  .card h5 {
+    color: #d63384;
+  }
+  
+  .card p {
+    color: #6c757d;
+  }
+  
+  .card .btn-warning {
+    background-color: #ffc107;
+    border: none;
+  }
+  
+  .card .btn-warning:hover {
+    background-color: #e0a800;
+  }
+  
+  .card .btn-danger {
+    background-color: #dc3545;
+    border: none;
+  }
+  
+  .card .btn-danger:hover {
+    background-color: #c82333;
+  }
+  
+  @media (max-width: 767px) {
+    .container {
+      padding: 10px;
+    }
+  
+    #messageForm {
+      padding: 15px;
+    }
+  
+    #messageForm button {
+      width: 100%;
+      padding: 10px;
+    }
+  
+    .card {
+      padding: 15px;
+    }
+  
+    .card h5 {
+      font-size: 1.2rem;
+    }
+  
+    .card p {
+      font-size: 0.9rem;
+    }
+  }
+  

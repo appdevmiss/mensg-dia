@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mensagem do Dia</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/e3d14d30d2.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="container">
+    <p id="message" class="quote">Carregando...</p>
+    <p id="author" class="author"></p>
+    <p id="date" class="date"></p>
+    <i class="fa-solid fa-book-bible icon" id="icon"></i>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+  <script>
+    const socket = io();
+
+    socket.on('newMessage', (message) => {
+      updateMessageOfTheDay(message);
+    });
+
+    socket.on('updateMessage', (message) => {
+      updateMessageOfTheDay(message);
+    });
+
+    socket.on('deleteMessage', (message) => {
+      if (message) {
+        updateMessageOfTheDay(message);
+      } else {
+        showNoMessage();
+      }
+    });
+
+    fetchMessageOfTheDay();
+
+    async function fetchMessageOfTheDay() {
+      const response = await fetch('/fetchMessageOfTheDay');
+      if (!response.ok) {
+        console.error('Failed to fetch message of the day');
+        showNoMessage();
+        return;
+      }
+      const message = await response.json();
+      updateMessageOfTheDay(message);
+    }
+
+    function updateMessageOfTheDay(message) {
+      document.getElementById('message').innerText = message.mensagem;
+      document.getElementById('author').innerText = message.autor;
+      document.getElementById('date').innerText = message.data;
+    }
+
+    function showNoMessage() {
+      document.getElementById('message').innerText = 'Ainda não temos mensagens, obrigado pela paciência';
+      document.getElementById('author').innerText = '';
+      document.getElementById('date').innerText = '';
+    }
+
+    function shareQuote() {
+      const message = document.getElementById('message').innerText;
+      const author = document.getElementById('author').innerText;
+      const text = `${message}\n\n${author}`;
+      if (navigator.share) {
+        navigator.share({
+          title: 'Mensagem do Dia',
+          text: text,
+        }).then(() => {
+          console.log('Compartilhamento bem-sucedido');
+        }).catch(console.error);
+      } else {
+        alert('Compartilhamento não suportado neste navegador.');
+      }
+    }
+  </script>
+</body>
+</html>

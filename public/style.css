@@ -1,0 +1,80 @@
+body {
+  background: url('./img/img.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #773260, #33174a);
+  opacity: 60%;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.quote {
+  font-size: 1.5rem;
+  margin: 20px 0;
+}
+
+.author {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.date {
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.share-button {
+  background-color: #27182c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  position: absolute;
+  width: 70%;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+.share-button:hover {
+  background-color: #5f4c60;
+}
+
+#icon {
+  font-size: 30px;
+  color: white;
+  margin-top: 20px;
+}
+
